@@ -1,27 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tasklist</title>
-	<script src="https://code.jquery.com/jquery-3.7.1.js" 
-	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
-	crossorigin="anonymous">
-	</script>
-</head>
-<body>
-	<h1>Tasklist</h1>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; script-src 'self' 'unsafe-inline' https://code.jquery.com;"
+    />
+    <title>TaskList</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="task.css" />
+  </head>
+  <body>
+    <h1>TaskList</h1>
 
-	<ul>
-		<li>Exemple tasca 1</li>
-	</ul>
+    <div class="version-container">
+      <div class="version-card">
+        <h2>V1 - TaskList Básica</h2>
+        <a href="v1/TaskListV1.html">Ver versión 1</a>
+      </div>
 
-	<script type="text/javascript">
-		var tasca = prompt("Tasca?")
-		
-		var jquery_elem = $("<li>"+tasca+"</li>");
+      <div class="version-card">
+        <h2>V2 - TaskList Avanzada</h2>
+        <a href="v2/TaskListV2.html">Ver versión 2</a>
+      </div>
 
-		$("ul").append(jquery_elem)
-	</script>
-</body>
+      <div class="version-card">
+        <h2>V3 - TaskList Final</h2>
+        <a href="v3/TaskListV3.html">Ver versión 3</a>
+      </div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script>
+      $(document).ready(function () {
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+          console.log("La aplicación está lista!");
+          $(".version-card").each(function (index) {
+            $(this)
+              .delay(100 * index)
+              .animate(
+                {
+                  opacity: 1,
+                },
+                300
+              );
+          });
+        }
+
+        $(".version-card").css("opacity", 0.8);
+      });
+    </script>
+  </body>
 </html>

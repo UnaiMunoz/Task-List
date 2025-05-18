@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TaskList V1</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="v1.css" />
+  </head>
+  <body>
+    <h1>TaskList V1</h1>
+
+    <div class="task-input">
+      <input type="text" id="newTask" placeholder="Añadir nueva tarea..." />
+      <button id="addTaskBtn">Añadir</button>
+    </div>
+
+    <ul id="taskList">
+      <li>Ejemplo tarea 1</li>
+    </ul>
+
+    <script>
+      $(document).ready(function () {
+        function addTask() {
+          const taskText = $("#newTask").val().trim();
+
+          if (taskText !== "") {
+            $("#taskList").append($("<li></li>").text(taskText));
+
+            $("#newTask").val("");
+          }
+        }
+
+        $("#addTaskBtn").on("click", function () {
+          addTask();
+        });
+
+        $("#newTask").on("keypress", function (e) {
+          if (e.which === 13) {
+            addTask();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
